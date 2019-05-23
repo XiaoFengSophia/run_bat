@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+<!-- application.properities中配置的变量 -->
+<springProperty scope="context" name="logLevel" source="log.level"/>
+<springProperty scope="context" name="logPath" source="log.path"/>
+<springProperty scope="context" name="logName" source="log.name"/>
+
+<!-- 控制台输出 -->
+<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+     <encoder>
+         <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{5} - %msg%n</pattern>
+     </encoder>
+</appender>
+
+<!-- 日志文件输出 -->
+<appender name="SYS_INFO" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <File>${logPath}/info.log</File>
+    <append>true</append>
+    <!--过滤器,只打INFO级别的日志-->
+    <filter class="ch.qos.logback.classic.filter.LevelFilter">
+        <level>INFO</level>
+        <onMatch>ACCEPT</onMatch>
+        <onMismatch>DENY</onMismatch>
+    </filter>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+        <fileNamePattern>${logPath}/info.log.%d</fileNamePattern>
+        <maxHistory>30</maxHistory>
+    </rollingPolicy>
+
+    <encoder charset="UTF-8">
+        <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{5} - %msg%n</pattern>
+        <charset>UTF-8</charset>
+    </encoder>
+</appender>
+
+<appender name="SYS_ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <File>${logPath}/error.log</File>
+    <append>true</append>
+    <!--过滤器,只打ERROR级别的日志-->
+    <filter class="ch.qos.logback.classic.filter.LevelFilter">
+        <level>ERROR</level>
+        <onMatch>ACCEPT</onMatch>
+        <onMismatch>DENY</onMismatch>
+    </filter>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+        <fileNamePattern>${logPath}/error.log.%d</fileNamePattern>
+        <maxHistory>12</maxHistory>
+    </rollingPolicy>
+
+    <encoder charset="UTF-8">
+        <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{5} - %msg%n</pattern>
+        <charset>UTF-8</charset>
+    </encoder>
+</appender>
+
+<!-- 日志输出级别 -->
+<root level="${logLevel}">
+   <appender-ref ref="console"/>
+   <appender-ref ref="SYS_INFO"/>
+   <appender-ref ref="SYS_ERROR"/>
+</root>
+
+</configuration>
+

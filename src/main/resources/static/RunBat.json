@@ -1,0 +1,16 @@
+[{
+		"name": "attendanceServer",
+		"dir": "D:\\zxf_class",
+		"file": "attendance.bat"
+	},
+	{
+		"name": "attendanceServer",
+		"dir": "D:\\zxf_class",
+		"file": "face.bat"
+	},
+	{
+		"name": "attendanceServer",
+		"dir": "D:\\zxf_class",
+		"file": "faceWeb.bat"
+	}
+]
