@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<configuration Name="智能考勤自启动">
+	<Product ID="attendance" dir="D:/Lg_Attendance_Master/Soft_Attendance_Master" file="3.attendance.bat"></Product>
+	<Product ID="face" dir="D:/Lg_Attendance_Slave/Soft_Attendance_Slave" file="1.face.bat"></Product>
+	<Product ID="faceWeb" dir="D:/Lg_Attendance_Slave/Soft_Attendance_Slave" file="2.faceWeb.bat"></Product>
+</configuration>
